@@ -1,5 +1,6 @@
 # How to use
-First generate the SSH keys using `ssh-keygen` and put them into the `ssh` subdirectory.
+First generate the SSH keys using `ssh-keygen` (or reuse the ones from the previous installation)
+and put them into the `ssh` subdirectory.
 
 Then build the image
 ```
