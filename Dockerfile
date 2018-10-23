@@ -9,7 +9,7 @@ ENV HOME=/home/${USER}
 
 
 RUN apt-get update -y && apt-get -y upgrade && \
-    apt-get install -y cmake git build-essential gcc gfortran libopenmpi-dev openmpi-bin openmpi-common openmpi-doc htop && \
+    apt-get install -y cmake git autoconf build-essential gcc gfortran libopenmpi-dev openmpi-bin openmpi-common openmpi-doc htop && \
     apt-get clean && apt-get purge && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # ------------------------------------------------------------
