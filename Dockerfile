@@ -42,3 +42,14 @@ ADD ssh/mpi.pub ${SSHDIR}/authorized_keys
 RUN chmod -R 600 ${SSHDIR}* && \
     chown -R ${USER}:${USER} ${SSHDIR}
 
+# ------------------------------------------------------------
+# Install AMPI
+# ------------------------------------------------------------
+RUN mkdir -p /opt/ampi
+RUN cd /opt && \
+    wget http://charm.cs.illinois.edu/distrib/charm-6.8.2.tar.gz && \
+    tar xf charm-6.8.2.tar.gz && \
+    mv charm-v6.8.2 charm && \
+    cd charm && \
+    ./build AMPI mpi-linux-x86_64 --with-production && \
+    ./build AMPI netlrts-linux-x86_64 --with-production

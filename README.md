@@ -9,4 +9,5 @@ docker build -t openmpi .
 
 Finally run to forward the SSH port
 ```
-docker run -d -p 2222:22 openmpi
+docker run --privileged -d -p 4222:22 -v /path/to/wd:/mnt openmpi
+```
