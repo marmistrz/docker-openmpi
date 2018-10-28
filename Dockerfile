@@ -7,9 +7,8 @@ ENV USER mpirun
 
 ENV HOME=/home/${USER} 
 
-
-RUN echo "deb http://ppa.launchpad.net/marmistrz/openmpi/ubuntu bionic main" >> /etc/apt/sources.list && \
-    apt-get update -y && apt-get -y upgrade && \
+RUN apt-get update -y && apt-get -y upgrade && apt-get install -y software-properties-common && \
+    add-apt-repository -y ppa:marmistrz/openmpi && \
     apt-get install -y cmake git autoconf build-essential gcc gfortran libopenmpi-dev openmpi-bin openmpi-common htop && \
     apt-get clean && apt-get purge && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
