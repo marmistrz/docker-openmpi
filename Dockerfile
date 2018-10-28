@@ -5,7 +5,7 @@ FROM rastasheep/ubuntu-sshd:18.04
 # FROM phusion/baseimage
 ENV USER mpirun
 
-ENV HOME=/home/${USER} 
+ENV HOME=/home/${USER}
 
 RUN apt-get update -y && apt-get -y upgrade && apt-get install -y software-properties-common && \
     add-apt-repository -y ppa:marmistrz/openmpi && \
@@ -23,7 +23,8 @@ RUN adduser --disabled-password --gecos "" ${USER} && \
 # Harden the SSHD configuration
 # ------------------------------------------------------------
 
-RUN sed -i 's/\#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config && \
+RUN sed -i 's/\#Port 22/Port 4222/' /etc/ssh/sshd_config && \
+    sed -i 's/\#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config && \
     sed -i 's/\#UsePAM yes/UsePAM no/' /etc/ssh/sshd_config
 
 # ------------------------------------------------------------
@@ -54,3 +55,4 @@ RUN cd /opt && \
     cd charm && \
     ./build AMPI mpi-linux-x86_64 --with-production && \
     ./build AMPI netlrts-linux-x86_64 --with-production
+# We need to use AMPI from git, current release fails big allocations

@@ -7,7 +7,11 @@ Then build the image
 docker build -t openmpi .
 ```
 
-Finally run to forward the SSH port
+Finally run the container.
 ```
-docker run --privileged -d -p 4222:22 -v /path/to/wd:/mnt openmpi
+docker run --privileged -d --network=host -v /path/to/wd:/mnt openmpi
 ```
+
+Notes:
+* `--privileged` is needed for `setarch` to work (used by AMPI)
+* `--network=host` is needed because OpenMPI will use high ports for inter-node communication
