@@ -9,7 +9,7 @@ docker build -t openmpi .
 
 Finally run the container.
 ```
-docker run --privileged -d --network=host -v /path/to/wd:/mnt openmpi
+docker run --privileged -d --network=host --shm-size=32g -v /path/to/wd:/mnt openmpi
 ```
 
 Notes:
