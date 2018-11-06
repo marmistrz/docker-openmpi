@@ -9,7 +9,7 @@ ENV HOME=/home/${USER}
 
 RUN apt-get update -y && apt-get -y upgrade && apt-get install -y software-properties-common && \
     add-apt-repository -y ppa:marmistrz/openmpi && \
-    apt-get install -y cmake git autoconf build-essential gcc gfortran libopenmpi-dev openmpi-bin openmpi-common htop && \
+    apt-get install -y cargo cmake git autoconf build-essential gcc gfortran libopenmpi-dev openmpi-bin openmpi-common htop && \
     apt-get clean && apt-get purge && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # ------------------------------------------------------------
@@ -46,13 +46,12 @@ RUN chmod -R 600 ${SSHDIR}* && \
 # ------------------------------------------------------------
 # Install AMPI
 # ------------------------------------------------------------
-RUN mkdir -p /opt/ampi
-RUN cd /opt && \
+#RUN cd /opt && \
     #wget http://charm.cs.illinois.edu/distrib/charm-6.8.2.tar.gz && \
     #tar xf charm-6.8.2.tar.gz && \
     #mv charm-v6.8.2 charm && \
-    git clone -b charm --depth 1 https://charm.cs.illinois.edu/gerrit/charm && \
-    cd charm && \
-    ./build AMPI mpi-linux-x86_64 --with-production && \
-    ./build AMPI netlrts-linux-x86_64 --with-production
+#    git clone -b charm --depth 1 https://charm.cs.illinois.edu/gerrit/charm && \
+#    cd charm && \
+#    ./build AMPI mpi-linux-x86_64 --with-production && \
+#    ./build AMPI netlrts-linux-x86_64 --with-production
 # We need to use AMPI from git, current release fails big allocations
