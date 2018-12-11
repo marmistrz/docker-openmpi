@@ -42,7 +42,9 @@ ADD ssh/mpi.pub ${SSHDIR}/id_rsa.pub
 ADD ssh/mpi.pub ${SSHDIR}/authorized_keys
 
 RUN chmod -R 600 ${SSHDIR}* && \
-    chown -R ${USER}:${USER} ${SSHDIR}
+    chown -R ${USER}:${USER} ${SSHDIR} && \
+    chown -R ${USER}:${USER} ${HOME}/.cargo && \
+    chown ${USER}:${USER} ${HOME}
 
 # ------------------------------------------------------------
 # Install AMPI
