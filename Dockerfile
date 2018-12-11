@@ -10,7 +10,7 @@ ENV HOME=/home/${USER}
 RUN apt-get update -y && apt-get -y upgrade && apt-get install -y software-properties-common && \
     add-apt-repository -y ppa:marmistrz/openmpi && \
     apt-get install -y curl cmake git autoconf build-essential gcc gfortran libopenmpi-dev openmpi-bin openmpi-common htop && \
-    curl https://sh.rustup.rs -sSf | sh && \
+    curl https://sh.rustup.rs -sSf | sh -s -- -y && \
     apt-get clean && apt-get purge && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # ------------------------------------------------------------
