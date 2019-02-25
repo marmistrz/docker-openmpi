@@ -1,6 +1,5 @@
 # How to use
-First generate the SSH keys using `ssh-keygen` (or reuse the ones from the previous installation)
-and put them into the `ssh` subdirectory.
+First generate the SSH keypair `ssh/mpi` and `ssh/mpi.pub` using `ssh-keygen` (or reuse the ones from the previous installation).
 
 Then build the image
 ```
