@@ -1,5 +1,10 @@
 # How to use
-First generate the SSH keypair `ssh/mpi` and `ssh/mpi.pub` using `ssh-keygen` (or reuse the ones from the previous installation).
+First generate the SSH keypair using `ssh-keygen` (or reuse the ones from the previous installation).
+```
+mkdir ssh
+ssh-keygen -f ssh/mpi
+```
+Make sure that you're using the same keypair across all your nodes.
 
 Then build the image
 ```
