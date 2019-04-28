@@ -4,6 +4,7 @@
 FROM rastasheep/ubuntu-sshd:18.04
 # FROM phusion/baseimage
 ENV USER mpirun
+ENV CHARM_VERSION 6.9.0
 
 ENV HOME=/home/${USER}
 
@@ -49,12 +50,11 @@ RUN chmod -R 600 ${SSHDIR}* && \
 # ------------------------------------------------------------
 # Install AMPI
 # ------------------------------------------------------------
-#RUN cd /opt && \
-    #wget http://charm.cs.illinois.edu/distrib/charm-6.8.2.tar.gz && \
-    #tar xf charm-6.8.2.tar.gz && \
-    #mv charm-v6.8.2 charm && \
+RUN cd /opt && \
+    wget http://charm.cs.illinois.edu/distrib/charm-${CHARM_VERSION}.tar.gz && \
+    tar xf charm-${CHARM_VERSION}.tar.gz && \
+    mv charm-${CHARM_VERSION} charm && \
 #    git clone -b charm --depth 1 https://charm.cs.illinois.edu/gerrit/charm && \
-#    cd charm && \
-#    ./build AMPI mpi-linux-x86_64 --with-production && \
-#    ./build AMPI netlrts-linux-x86_64 --with-production
-# We need to use AMPI from git, current release fails big allocations
+   cd charm && \
+   ./build AMPI mpi-linux-x86_64 --with-production && \
+   ./build AMPI netlrts-linux-x86_64 --with-production
