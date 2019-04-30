@@ -7,7 +7,7 @@ ENV USER mpirun
 
 ENV HOME=/home/${USER}
 
-RUN apt-get update -y && apt-get -y upgrade && apt-get install -y software-properties-common && \
+RUN apt-get update -y && apt-get -y upgrade && apt-get install -y software-properties-common iproute2 && \
     add-apt-repository -y ppa:marmistrz/openmpi && \
     apt-get install -y curl cmake git autoconf build-essential gcc-8 gfortran-8 libopenmpi-dev openmpi-bin openmpi-common htop && \
     curl https://sh.rustup.rs -sSf | sh -s -- -y && \
