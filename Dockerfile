@@ -43,6 +43,8 @@ RUN mkdir -p ${SSHDIR} && \
     chmod -R 600 ${SSHDIR}* && \
     chown -R ${USER}:${USER} ${SSHDIR}
 
+# Prepare gumpi directories
+RUN mkdir /input /output /app
 ENTRYPOINT /usr/sbin/sshd -D
 
 # ------------------------------------------------------------
