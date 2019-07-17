@@ -44,7 +44,8 @@ RUN mkdir -p ${SSHDIR} && \
     chown -R ${USER}:${USER} ${SSHDIR}
 
 # Prepare gumpi directories
-RUN mkdir /input /output /app
+RUN mkdir /input /output /app && \
+    chown mpirun /input /output /app
 ENTRYPOINT /usr/sbin/sshd -D
 
 # ------------------------------------------------------------
